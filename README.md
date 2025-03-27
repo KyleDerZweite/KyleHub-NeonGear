@@ -66,10 +66,9 @@ pnpm dev
 
 ```
 KyleHub/
-├── app/           # Next.js 15 app directory
-├── components/    # Reusable React components
 ├── public/        # Static files
-└── styles/        # Global styles and Tailwind configuration
+├── src/app/       # Next.js 15 app directory
+└── src/styles/    # Global styles and Tailwind configuration
 ```
 
 ## 🔧 Available Scripts
