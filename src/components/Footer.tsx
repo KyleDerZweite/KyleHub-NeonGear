@@ -34,7 +34,7 @@ const Footer = () => {
                                 <FiGithub className="h-6 w-6" />
                                 <span className="sr-only">GitHub</span>
                             </a>
-                            <a href="https://instagram.com/kylehub" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                            <a href="https://instagram.com/kylehub.dev" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                                 <FiInstagram className="h-6 w-6" />
                                 <span className="sr-only">Instagram</span>
                             </a>
@@ -51,7 +51,7 @@ const Footer = () => {
                     <div className="mt-4 flex justify-center space-x-6">
                         <a href="https://github.com/KyleDerZweite" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-white transition-colors">GitHub</a>
                         <a href="https://discord.gg/2tVKEvn7kK" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-white transition-colors">Discord</a>
-                        <a href="https://instagram.com/kylehub" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-white transition-colors">Instagram</a>
+                        <a href="https://instagram.com/kylehub.dev" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-white transition-colors">Instagram</a>
                     </div>
                 </div>
             </div>

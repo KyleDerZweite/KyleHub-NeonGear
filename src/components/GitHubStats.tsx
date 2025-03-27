@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { FiGithub, FiStar, FiGitBranch, FiCode } from 'react-icons/fi'
+import { FiGithub, FiStar, FiGitBranch, FiCode, FiClock } from 'react-icons/fi'
 
 // Define types for the data we'll fetch
 type LanguageStats = {
@@ -16,6 +16,7 @@ type RepoStats = {
     forks: number
     languages: LanguageStats
     totalBytes: number
+    updatedAt: string
 }
 
 // Color mapping for common languages
@@ -44,30 +45,12 @@ const GitHubStats = () => {
             try {
                 setLoading(true)
 
-                // Fetch basic repo info
-                const repoResponse = await fetch('https://api.github.com/repos/KyleDerZweite/KyleHub')
-                if (!repoResponse.ok) throw new Error('Failed to fetch repository data')
-                const repoData = await repoResponse.json()
+                // Use our server-side API route instead of directly calling GitHub
+                const response = await fetch('/api/github-stats')
+                if (!response.ok) throw new Error('Failed to fetch repository data')
 
-                // Fetch language stats
-                const langResponse = await fetch('https://api.github.com/repos/KyleDerZweite/KyleHub/languages')
-                if (!langResponse.ok) throw new Error('Failed to fetch language data')
-                const langData = await langResponse.json()
-
-                // Calculate total bytes across all languages
-                const totalBytes = Object.values(langData as Record<string, number>).reduce(
-                    (sum, bytes) => sum + bytes,
-                    0
-                )
-
-                setStats({
-                    name: repoData.name,
-                    description: repoData.description || 'No description available',
-                    stars: repoData.stargazers_count,
-                    forks: repoData.forks_count,
-                    languages: langData,
-                    totalBytes
-                })
+                const data = await response.json()
+                setStats(data)
             } catch (err) {
                 console.error('Error fetching GitHub stats:', err)
                 setError('Failed to load GitHub repository stats')
@@ -79,6 +62,7 @@ const GitHubStats = () => {
         fetchRepoStats()
     }, [])
 
+    // Rest of component remains the same...
     if (loading) {
         return (
             <div className="flex justify-center items-center py-20">
@@ -166,6 +150,12 @@ const GitHubStats = () => {
                                         </div>
                                     )
                                 })}
+                            </div>
+
+                            {/* Show when data was last updated */}
+                            <div className="text-sm text-gray-500 flex items-center mt-4">
+                                <FiClock className="mr-1" />
+                                Last updated: {new Date(stats.updatedAt).toLocaleString()}
                             </div>
                         </div>
 

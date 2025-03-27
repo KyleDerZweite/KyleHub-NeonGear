@@ -2,6 +2,7 @@
 
 import {motion} from 'framer-motion'
 import Image from 'next/image'
+import GitHubStats from '@/components/GitHubStats'
 
 export default function About() {
     return (
@@ -37,16 +38,17 @@ export default function About() {
                             viewport={{once: true}}
                             transition={{duration: 0.6}}
                         >
-                            <h2 className="text-3xl font-bold mb-6">Our Vision</h2>
+                            <h2 className="text-3xl font-bold mb-6">My Vision</h2>
                             <p className="text-gray-400 mb-4">
-                                KyleHub was created with a vision to blend the aesthetics of steampunk and cyberpunk
-                                into a unique digital experience. We believe that technology should not only be
-                                functional
-                                but also visually engaging and emotionally evocative.
+                                KyleHub was created as a cornerstone for my project,
+                                designed to explore the possibilities of web development while blending
+                                the aesthetics of steampunk and cyberpunk into a unique digital experience.
+                                I believe that technology should not only be functional but also visually engaging and emotionally evocative.
                             </p>
                             <p className="text-gray-400 mb-4">
                                 Drawing inspiration from vintage industrial elements and futuristic neon aesthetics,
-                                we've created a platform that stands at the intersection of the past and the future.
+                                KyleHub stands at the intersection of the past and the future,
+                                pushing the boundaries of creativity and innovation in web design.
                             </p>
                             <div className="mt-8 flex gap-4">
                                 <div className="p-4 bg-primary-900/50 rounded-lg border border-primary-700/30">
@@ -123,6 +125,9 @@ export default function About() {
                     </div>
                 </div>
             </section>
+
+            {/* Add GitHub Stats component right after Core Technologies */}
+            <GitHubStats />
         </div>
     )
 }
