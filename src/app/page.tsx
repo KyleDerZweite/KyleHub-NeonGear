@@ -81,13 +81,18 @@ export default function Home() {
                     {/* Discord Widget Section */}
                     <section className="mt-20 py-10 border-t border-purple-500/30">
                         <h3 className="text-2xl font-bold mb-8 text-center text-glow-subtle">Join Our Community</h3>
-                        <div className="discord-widget-container mx-auto max-w-md h-[500px] bg-gray-800/50 border border-purple-500/30 rounded-lg">
+                        <div className="discord-widget-container mx-auto max-w-md h-[500px] bg-gray-800/50 border border-purple-500/30 rounded-lg p-3">
                             {/* Discord Widget Placeholder - Replace with your Discord widget embed code */}
-                            <div className="flex items-center justify-center h-full">
-                                <p className="text-center text-gray-400">
-                                    [Discord Widget Goes Here]<br />
-                                    <span className="text-sm">Paste your Discord widget embed code here</span>
-                                </p>
+                            <div className="flex items-center justify-center h-full overflow-hidden rounded-md">
+                                <iframe
+                                    src="https://discord.com/widget?id=1354840927218434078&theme=dark"
+                                    width="100%"
+                                    height="100%"
+                                    allowtransparency="true"
+                                    frameBorder="0"
+                                    className="rounded-md"
+                                    sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+                                </iframe>
                             </div>
                         </div>
                     </section>
@@ -106,11 +111,9 @@ export default function Home() {
 
                 <footer className="border-t border-purple-500/30 p-8 mt-16">
                     <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-                        <p className="text-gray-400">&copy; {new Date().getFullYear()} KyleHub.dev. All rights reserved.</p>
+                        <p className="text-gray-400">&copy; {new Date().getFullYear()} Kyle</p>
                         <div className="flex space-x-6 mt-4 md:mt-0">
-                            <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">GitHub</a>
-                            <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Twitter</a>
-                            <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">LinkedIn</a>
+                            <a href="https://github.com/KyleDerZweite/KyleHub" className="text-gray-400 hover:text-purple-400 transition-colors">GitHub</a>
                         </div>
                     </div>
                 </footer>

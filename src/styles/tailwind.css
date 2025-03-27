@@ -82,22 +82,91 @@ body {
   0 0 30px rgba(137, 58, 234, 0.4);
 }
 
-/* Steampunk Elements */
+/* Enhanced Steampunk Gears */
 .steampunk-gear {
   position: absolute;
   z-index: 0;
   border-radius: 50%;
-  border: 8px solid rgba(217, 119, 6, 0.3);
-  background: radial-gradient(circle at center,
-  rgba(110, 70, 40, 0.7) 0%,
-  rgba(70, 40, 20, 0.5) 70%,
-  rgba(40, 20, 10, 0.3) 100%);
-  box-shadow: inset 0 0 20px rgba(255, 180, 0, 0.2);
-  background-color: rgba(146, 64, 14, 0.2);
+  background: repeating-radial-gradient(
+          circle at center,
+          #b68d40 0%,
+          #7c5e28 10%,
+          #5e4a1f 20%,
+          #7c5e28 30%,
+          #b68d40 40%,
+          #7c5e28 50%,
+          #5e4a1f 60%,
+          #7c5e28 70%,
+          #b68d40 80%
+  );
+  box-shadow:
+          0 0 15px rgba(182, 141, 64, 0.4),
+          inset 0 0 25px rgba(0, 0, 0, 0.7);
   transform-origin: center;
   animation: spin 60s linear infinite;
+  /* Rivets around the edge */
+  border: 4px double #5e4a1f;
 }
 
+/* Create the gear teeth */
+.steampunk-gear::after {
+  content: '';
+  position: absolute;
+  top: -12%;
+  left: -12%;
+  right: -12%;
+  bottom: -12%;
+  background-image: repeating-conic-gradient(
+          from 0deg,
+          transparent 0deg 18deg,
+          rgba(0, 0, 0, 0.6) 18deg 19deg,
+          #b68d40 19deg 20deg,
+          #5e4a1f 20deg 28deg,
+          #b68d40 28deg 29deg,
+          rgba(0, 0, 0, 0.6) 29deg 30deg
+  );
+  z-index: -1;
+  border-radius: 50%;
+  /* Clever mask to show only the teeth */
+  mask-image: radial-gradient(
+          transparent 0% 60%,
+          black 60% 100%
+  );
+  -webkit-mask-image: radial-gradient(
+          transparent 0% 60%,
+          black 60% 100%
+  );
+}
+
+/* Enhanced center hub with rivets */
+.steampunk-gear::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40%;
+  height: 40%;
+  background:
+          radial-gradient(
+                  circle at center,
+                  #b68d40 0%,
+                  #7c5e28 40%,
+                  #5e4a1f 100%
+          );
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow:
+          inset 0 0 10px rgba(0, 0, 0, 0.7),
+          0 0 5px rgba(182, 141, 64, 0.5);
+  /* Add rivet effect with pseudo-elements */
+  background-image:
+          radial-gradient(circle at 30% 30%, #d4af37 0%, #d4af37 5%, transparent 6%),
+          radial-gradient(circle at 70% 30%, #d4af37 0%, #d4af37 5%, transparent 6%),
+          radial-gradient(circle at 30% 70%, #d4af37 0%, #d4af37 5%, transparent 6%),
+          radial-gradient(circle at 70% 70%, #d4af37 0%, #d4af37 5%, transparent 6%);
+}
+
+/* Customize gear positions and sizes for better effect */
 .gear-1 {
   top: -6rem;
   right: -6rem;
@@ -123,17 +192,21 @@ body {
   animation-duration: 180s;
 }
 
-.steampunk-gear::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 33%;
-  height: 33%;
-  background-color: rgba(146, 64, 14, 0.4);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 10px rgba(255, 180, 0, 0.3);
+.gear-4 {
+  top: 20%;
+  right: 10%;
+  width: 8rem;
+  height: 8rem;
+  animation-duration: 70s;
+}
+
+.gear-5 {
+  bottom: 15%;
+  left: 5%;
+  width: 10rem;
+  height: 10rem;
+  animation-duration: 90s;
+  animation-direction: reverse;
 }
 
 .steampunk-button {
@@ -147,6 +220,36 @@ body {
 .steampunk-button:hover {
   background-color: rgba(146, 64, 14, 0.3);
   box-shadow: inset 0 0 10px rgba(255, 180, 0, 0.5);
+}
+
+/* Blueprint background */
+.technical-blueprint {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+          linear-gradient(rgba(59, 130, 246, 0.05) 1.5px, transparent 1.5px),
+          linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1.5px, transparent 1.5px),
+          linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+  background-size: 75px 75px, 75px 75px, 15px 15px, 15px 15px;
+  z-index: -1;
+}
+
+/* Circuit line patterns */
+.circuit-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+          linear-gradient(90deg, transparent 49.5%, rgba(137, 58, 234, 0.1) 49.5%, rgba(137, 58, 234, 0.1) 50.5%, transparent 50.5%),
+          linear-gradient(transparent 49.5%, rgba(137, 58, 234, 0.1) 49.5%, rgba(137, 58, 234, 0.1) 50.5%, transparent 50.5%);
+  background-size: 10% 10%;
+  z-index: -2;
 }
 
 /* Tech Card and Badges */
@@ -166,6 +269,11 @@ body {
   color: #d1d5db;
   border: 1px solid rgba(137, 58, 234, 0.2);
   transition: all 0.2s ease;
+  background-image: radial-gradient(
+          rgba(137, 58, 234, 0.15) 1px,
+          transparent 1px
+  );
+  background-size: 5px 5px;
 }
 
 .tech-badge:hover {
@@ -173,6 +281,51 @@ body {
   color: white;
   box-shadow: 0 0 10px rgba(137, 58, 234, 0.3);
   transform: translateY(-2px);
+}
+
+/* Technical gauges and meters */
+.gauge-container {
+  margin: 10px 0;
+}
+
+.gauge-outer {
+  height: 12px;
+  background-color: rgba(31, 41, 55, 0.6);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(137, 58, 234, 0.2);
+}
+
+.gauge-inner {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyber-purple), var(--cyber-blue));
+  border-radius: 4px;
+  transition: width 1s ease-in-out;
+  animation: pulse 3s infinite;
+}
+
+.memory-bars {
+  display: flex;
+  justify-content: space-between;
+  height: 65px;
+  margin: 0 5px;
+}
+
+.memory-bar-container {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.memory-bar {
+  width: 100%;
+  background: linear-gradient(0deg, var(--cyber-blue), var(--cyber-purple));
+  border-radius: 2px 2px 0 0;
+}
+
+.network-graph {
+  margin: 0 -5px;
 }
 
 /* Terminal and Code */
@@ -218,6 +371,14 @@ body {
   opacity: 0;
 }
 
+/* Make code sections more technical */
+pre, code {
+  background-color: rgba(31, 41, 55, 0.7);
+  border-left: 3px solid var(--cyber-purple);
+  border-radius: 4px;
+  font-family: 'Roboto Mono', monospace;
+}
+
 /* Animations */
 @keyframes cursor-blink {
   from, to { border-color: transparent }
@@ -229,6 +390,11 @@ body {
   to { transform: rotate(360deg); }
 }
 
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
 @keyframes glow-pulse {
   0%, 100% { opacity: 0.7; }
   50% { opacity: 1; }
@@ -237,4 +403,12 @@ body {
 /* For monospace code */
 pre, code {
   font-family: var(--font-mono), 'Roboto Mono', monospace;
+}
+
+/* System stats timestamp */
+.system-timestamp {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--cyber-blue);
+  text-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
 }
