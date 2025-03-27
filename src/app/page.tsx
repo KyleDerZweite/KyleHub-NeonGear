@@ -195,8 +195,7 @@ export default function Home() {
                                     src="https://discord.com/widget?id=1354840927218434078&theme=dark"
                                     width="100%"
                                     height="100%"
-                                    allowTransparency="true"
-                                    frameBorder="0"
+                                    allowTransparency={true}
                                     className="rounded-md"
                                     sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
                                 </iframe>
