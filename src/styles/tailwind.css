@@ -1,496 +1,125 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;700&display=swap');
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
 
-  /* Cyberpunk theme colors */
-  --cyber-purple: #893aea;
-  --cyber-blue: #3b82f6;
-  --cyber-glow: rgba(168, 85, 247, 0.5);
+  body {
+    @apply bg-gradient-to-b from-cyberpunk-dark to-black text-gray-100 antialiased;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+  }
 
-  /* Steampunk theme colors */
-  --steam-amber: #d97706;
-  --steam-bronze: #92400e;
-  --steam-copper: #7c2d12;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  ::selection {
+    @apply bg-primary-500/30 text-white;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 focus:ring-offset-cyberpunk-dark;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border border-secondary-500 text-secondary-500 hover:bg-secondary-500/10 focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500 focus:ring-offset-cyberpunk-dark;
+  }
+
+  .nav-link {
+    @apply inline-block relative px-3 py-2 text-gray-300 hover:text-white transition-colors duration-200 font-medium;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute h-[2px] w-0 left-0 bottom-0 bg-secondary-500 transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .nav-link.active {
+    @apply text-white;
+  }
+
+  .nav-link.active::after {
+    @apply w-full;
+  }
+
+  .tech-card {
+    @apply relative overflow-hidden transition-all duration-500;
+  }
+
+  .tech-card::before {
+    @apply content-[''] absolute inset-0 border border-primary-500/50 rounded-lg;
+    box-shadow: inset 0 0 20px theme('colors.primary.500/20');
+  }
+
+  .tech-card::after {
+    @apply content-[''] absolute -inset-[1px] rounded-lg opacity-0 transition-opacity duration-300;
+    background: linear-gradient(90deg,
+    transparent,
+    theme('colors.secondary.500/30'),
+    transparent
+    );
+  }
+
+  .tech-card:hover::after {
+    @apply opacity-100;
+    animation: scanner 2s ease-in-out infinite;
+  }
+
+  .typing-effect {
+    @apply inline-block overflow-hidden whitespace-nowrap border-r-2 border-secondary-500 animate-typing;
+    animation: typing 3.5s steps(40, end), blink 0.75s step-end infinite;
+  }
+
+  .answer-reveal {
+    @apply relative text-purple-400 opacity-0 hover:opacity-100 transition-opacity duration-300 cursor-help;
+  }
+
+  .glitch-effect {
+    @apply relative inline-block;
+    text-shadow: 0.05em 0 0 theme('colors.cyberpunk.neon'),
+    -0.05em -0.025em 0 theme('colors.cyberpunk.accent');
+  }
+
+  .glitch-effect:hover {
+    animation: glitch 0.3s infinite;
+  }
+
+  .grid-bg {
+    background-size: 30px 30px;
+    @apply bg-cyber-grid;
+  }
 }
 
-/* ========================= */
-/* TEXT & COMMON EFFECTS    */
-/* ========================= */
-
-.text-glow {
-  text-shadow: 0 0 10px var(--cyber-glow),
-  0 0 20px rgba(168, 85, 247, 0.3),
-  0 0 30px rgba(168, 85, 247, 0.1);
+@keyframes scanner {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
-.text-glow-subtle {
-  text-shadow: 0 0 5px rgba(168, 85, 247, 0.3);
+.backdrop-blur-card {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-/* For monospace code */
-pre, code {
-  font-family: var(--font-mono), 'Roboto Mono', monospace;
-  background-color: rgba(31, 41, 55, 0.7);
-  border-left: 3px solid var(--cyber-purple);
-  border-radius: 4px;
-}
-
-/* ========================= */
-/* CYBERPUNK ELEMENTS       */
-/* ========================= */
-
-.cyber-grid {
-  background-image:
-          linear-gradient(rgba(137, 58, 234, 0.08) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(137, 58, 234, 0.08) 1px, transparent 1px);
-  background-size: 40px 40px;
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  opacity: 0.3;
-  /* Metallic scanline effect */
-  animation: scanline 10s linear infinite;
-}
-
-/* Blueprint background */
-.technical-blueprint {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image:
-          linear-gradient(rgba(59, 130, 246, 0.05) 1.5px, transparent 1.5px),
-          linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1.5px, transparent 1.5px),
-          linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-  background-size: 75px 75px, 75px 75px, 15px 15px, 15px 15px;
-  z-index: -1;
-  opacity: 0.4;
-}
-
-/* Circuit line patterns */
-.circuit-lines {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image:
-          linear-gradient(90deg, transparent 49.5%, rgba(137, 58, 234, 0.1) 49.5%, rgba(137, 58, 234, 0.1) 50.5%, transparent 50.5%),
-          linear-gradient(transparent 49.5%, rgba(137, 58, 234, 0.1) 49.5%, rgba(137, 58, 234, 0.1) 50.5%, transparent 50.5%);
-  background-size: 10% 10%;
-  z-index: -2;
-  opacity: 0.2;
-}
-
-/* Clean metallic cyber elements */
-.cyber-line {
-  position: relative;
-  background: linear-gradient(to right, var(--cyber-purple), var(--cyber-blue));
-  box-shadow:
-          0 0 10px rgba(137, 58, 234, 0.7),
-          0 0 20px rgba(59, 130, 246, 0.5);
-  overflow: hidden;
-}
-
-/* Metallic shine effect for cyber elements */
-.cyber-line::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-          to right,
-          transparent,
-          rgba(255, 255, 255, 0.2),
-          transparent
-  );
-  transform: skewX(-25deg);
-  animation: shine 8s ease-in-out infinite;
-}
-
-.cyber-line.vertical {
-  background: linear-gradient(180deg, var(--cyber-purple), var(--cyber-blue));
-}
-
-/* Enhance cyber button with metallic finish */
-.cyber-button {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s;
-  box-shadow:
-          0 0 10px rgba(137, 58, 234, 0.5),
-          inset 0 0 5px rgba(255, 255, 255, 0.1);
-  background: linear-gradient(135deg,
-  rgba(137, 58, 234, 0.9),
-  rgba(59, 130, 246, 0.9));
-}
-
-.cyber-button::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-          to right,
-          transparent,
-          rgba(255, 255, 255, 0.1),
-          transparent
-  );
-  transform: skewX(-15deg);
-  animation: buttonShine 5s ease-in-out infinite;
-}
-
-.cyber-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 15px rgba(137, 58, 234, 0.7),
-  0 0 30px rgba(137, 58, 234, 0.4);
-}
-
-/* Realistic steampunk button with worn brass look */
-.steampunk-button {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s;
-  background-color: rgba(146, 64, 14, 0.2);
-  box-shadow:
-          inset 0 0 5px rgba(255, 180, 0, 0.3),
-          0 2px 4px rgba(0, 0, 0, 0.3);
-  border: 2px solid rgba(217, 119, 6, 0.6) !important;
-  /* Textured surface */
-  background-image:
-          linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.1) 75%),
-          linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.1) 75%);
-  background-size: 4px 4px;
-  background-position: 0 0, 2px 2px;
-}
-
-.steampunk-button:hover {
-  background-color: rgba(171, 92, 24, 0.4);
-  box-shadow:
-          inset 0 0 10px rgba(255, 180, 0, 0.5),
-          0 2px 8px rgba(0, 0, 0, 0.4);
-  transform: translateY(-1px);
-  color: rgba(255, 180, 0, 0.9);
-}
-
-/* ========================= */
-/* TERMINAL & TECH ELEMENTS  */
-/* ========================= */
-
-.tech-card {
-  box-shadow:
-          0 0 20px rgba(137, 58, 234, 0.2),
-          inset 0 0 10px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(3px);
-}
-
-.tech-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(to right, transparent, var(--cyber-purple), transparent);
-  animation: scanGlow 4s ease-in-out infinite;
-}
-
-.tech-card:hover {
-  box-shadow: 0 0 30px rgba(137, 58, 234, 0.3);
-}
-
-.terminal-header {
-  background-color: rgba(31, 41, 55, 0.9);
-  padding: 0.5rem;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-  display: flex;
-  align-items: center;
-}
-
-/* Terminal dots animation */
-.terminal-header div {
-  transition: all 0.2s;
-}
-
-.tech-card:hover .terminal-header div:nth-child(1) {
-  background-color: #ff5f57;
-  box-shadow: 0 0 6px #ff5f57;
-}
-
-.tech-card:hover .terminal-header div:nth-child(2) {
-  background-color: #febc2e;
-  box-shadow: 0 0 6px #febc2e;
-}
-
-.tech-card:hover .terminal-header div:nth-child(3) {
-  background-color: #28c840;
-  box-shadow: 0 0 6px #28c840;
-}
-
-/* Improved cursor and typing effect */
-.typing-effect {
-  display: inline-block;
-  border-right: 2px solid rgba(255, 255, 255, 0.7);
-  animation: cursor-blink 1.5s step-end infinite;
-}
-
-pre {
-  background: rgba(26, 32, 44, 0.95);
-  border-left: 3px solid var(--cyber-purple);
-  box-shadow:
-          inset 0 0 10px rgba(0, 0, 0, 0.5),
-          0 0 5px rgba(137, 58, 234, 0.3);
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-
-pre::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-          0deg,
-          transparent,
-          transparent 2px,
-          rgba(137, 58, 234, 0.03) 3px,
-          rgba(137, 58, 234, 0.03) 3px
-  );
-  pointer-events: none;
-}
-
-.answer-reveal {
-  position: relative;
-  opacity: 0;
-  transition: opacity 0.3s;
-  cursor: help;
-  text-decoration: underline dotted rgba(255, 255, 255, 0.3);
-}
-
-.answer-reveal:hover {
-  opacity: 1;
-  text-shadow: 0 0 8px rgba(137, 58, 234, 0.8);
-}
-
-/* Technical gauges and meters */
-.gauge-container {
-  margin: 10px 0;
-}
-
-.gauge-outer {
-  height: 12px;
-  background-color: rgba(31, 41, 55, 0.6);
-  border-radius: 6px;
-  overflow: hidden;
-  border: 1px solid rgba(137, 58, 234, 0.2);
-}
-
-.gauge-inner {
-  height: 100%;
-  background: linear-gradient(90deg, var(--cyber-purple), var(--cyber-blue));
-  border-radius: 4px;
-  transition: width 1s ease-in-out;
-  animation: pulse 3s infinite;
-}
-
-.memory-bars {
-  display: flex;
-  justify-content: space-between;
-  height: 65px;
-  margin: 0 5px;
-}
-
-.memory-bar-container {
-  width: 10%;
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-}
-
-.memory-bar {
-  width: 100%;
-  background: linear-gradient(0deg, var(--cyber-blue), var(--cyber-purple));
-  border-radius: 2px 2px 0 0;
-}
-
-.network-graph {
-  margin: 0 -5px;
-}
-
-/* Tech badges with metallic shine */
-.tech-badge {
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  background-color: rgba(31, 41, 55, 0.6);
-  color: #d1d5db;
-  border: 1px solid rgba(137, 58, 234, 0.2);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  /* Metallic texture */
-  background-image: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.1) 0%,
-          transparent 50%,
-          rgba(255, 255, 255, 0.1) 100%
-  );
-}
-
-.tech-badge:hover {
-  border-color: rgba(137, 58, 234, 0.7);
-  color: white;
-  box-shadow: 0 0 15px rgba(137, 58, 234, 0.4);
-  transform: translateY(-2px) scale(1.05);
-}
-
-.tech-badge::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -60%;
-  width: 20%;
-  height: 200%;
-  background: rgba(255, 255, 255, 0.1);
-  transform: rotate(30deg);
-  animation: techBadgeShine 6s ease-in-out infinite;
-}
-
-/* Discord widget styles */
-.discord-widget-container {
-  transition: all 0.3s;
-}
-
-.discord-widget-container:hover {
-  box-shadow: 0 0 20px rgba(137, 58, 234, 0.3);
-}
-
-/* Enhanced header */
-header {
-  position: relative;
-  overflow: hidden;
-}
-
-header::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(
-          to right,
-          transparent,
-          var(--cyber-purple),
-          var(--cyber-blue),
-          var(--cyber-purple),
-          transparent
-  );
-}
-
-/* Enhanced footer */
-footer {
-  position: relative;
-  overflow: hidden;
-}
-
-footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(
-          to right,
-          transparent,
-          var(--cyber-purple),
-          var(--cyber-blue),
-          var(--cyber-purple),
-          transparent
-  );
-}
-
-/* ========================= */
-/* ANIMATIONS               */
-/* ========================= */
-
-@keyframes cursor-blink {
-  from, to { border-color: transparent }
-  50% { border-color: rgba(255, 255, 255, 0.7); }
+.tech-loader {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(92, 31, 220, 0.3);
+  border-top-color: rgba(130, 87, 230, 0.9);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes glow-pulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
-}
-
-@keyframes scanline {
-  0%, 100% { background-position: 0 0; }
-  50% { background-position: 0 20px; }
-}
-
-@keyframes shine {
-  0%, 100% { left: -100%; }
-  30%, 70% { left: 150%; }
-}
-
-@keyframes buttonShine {
-  0%, 100% { left: -100%; }
-  40%, 60% { left: 100%; }
-}
-
-@keyframes techBadgeShine {
-  0%, 100% { left: -60%; }
-  30% { left: 130%; }
-}
-
-@keyframes scanGlow {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+  to {
+    transform: rotate(360deg);
+  }
 }
