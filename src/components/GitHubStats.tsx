@@ -208,7 +208,7 @@ const GitHubStats = () => {
                             </div>
 
                             <div className="mt-8 grid grid-cols-2 gap-2">
-                                {Object.entries(stats.languages).map(([lang, bytes]) => (
+                                {Object.entries(stats.languages).map(([lang]) => (
                                     <div key={lang} className="flex items-center text-sm">
                                         <div
                                             className="w-3 h-3 mr-2 rounded-full"

@@ -83,7 +83,7 @@ const TerminalCard = () => {
 // And what's mystery(5)?`}
               </pre>
                             <p className="text-gray-400 text-sm">
-                                // Hover here for answer: <span
+                                Hover here for answer: <span
                                 className="answer-reveal">Recursion; 120 (5 factorial)</span>
                             </p>
 
@@ -105,7 +105,7 @@ const TerminalCard = () => {
 // What modern JavaScript concept is being demonstrated?`}
                 </pre>
                                 <p className="text-gray-400 text-sm">
-                                    // Hover here for answer: <span className="answer-reveal">Async/Await for handling Promises</span>
+                                    Hover here for answer: <span className="answer-reveal">Async/Await for handling Promises</span>
                                 </p>
                             </div>
                         </div>
