@@ -8,6 +8,7 @@
   }
 
   body {
+    /* Removed light mode references, kept only dark mode styles */
     @apply bg-gradient-to-b from-cyberpunk-dark to-black text-gray-100 antialiased;
     background-size: 100% 100%;
     background-attachment: fixed;
@@ -122,4 +123,82 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* File editor styling */
+.shadow-glow {
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+}
+
+.editor-container {
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+}
+
+.minimap-content div {
+  opacity: 0.5;
+}
+
+.line-numbers {
+  min-width: 2.5rem;
+}
+
+.answer-reveal {
+  position: relative;
+  cursor: help;
+}
+
+.answer-reveal:before {
+  content: "Hover to reveal answer";
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #9ca3af;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.answer-reveal:hover:before {
+  opacity: 0;
+}
+
+/* Add this to your existing CSS file */
+
+/* Code editor styling for Privacy and Terms pages */
+.code-editor-content {
+  font-family: 'Consolas', 'Courier New', monospace;
+  line-height: 1.6;
+}
+
+.code-editor-content h1 {
+  color: #d4d4ff;
+  margin-bottom: 1.5rem;
+}
+
+.code-editor-content h2 {
+  color: #af87ff;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.code-editor-content p {
+  margin-bottom: 1rem;
+}
+
+.code-editor-content a {
+  color: #59a6ff;
+  text-decoration: underline;
+}
+
+.code-editor-content a:hover {
+  color: #7eb6ff;
+}
+
+.code-editor-content ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.code-editor-content li {
+  margin-bottom: 0.5rem;
 }

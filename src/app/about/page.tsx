@@ -40,28 +40,33 @@ export default function About() {
                         >
                             <h2 className="text-3xl font-bold mb-6">My Vision</h2>
                             <p className="text-gray-400 mb-4">
-                                KyleHub was created as a cornerstone for my project,
-                                designed to explore the possibilities of web development while blending
-                                the aesthetics of steampunk and cyberpunk into a unique digital experience.
-                                I believe that technology should not only be functional but also visually engaging and emotionally evocative.
+                                KyleHub began as a simple landing page project - I wanted visitors to my domain to be
+                                greeted
+                                with an engaging, well-designed site rather than a blank page. While I initially
+                                experimented with
+                                blending steampunk and cyberpunk aesthetics, the project evolved into its current modern
+                                style
+                                with cyberpunk influences.
                             </p>
                             <p className="text-gray-400 mb-4">
-                                Drawing inspiration from vintage industrial elements and futuristic neon aesthetics,
-                                KyleHub stands at the intersection of the past and the future,
-                                pushing the boundaries of creativity and innovation in web design.
+                                Today, KyleHub serves as the foundation for my digital presence and future projects.
+                                Beyond the home and about pages, it features the beginnings of an Easter Egg Hunt,
+                                Discord
+                                integration, and technology showcases. Most importantly, this domain is designed to be a
+                                cornerstone for my expanding interests, particularly in AI, where I plan to host tools
+                                like
+                                openwebui and comfyui on dedicated subdomains.
                             </p>
                             <div className="mt-8 flex gap-4">
                                 <div className="p-4 bg-primary-900/50 rounded-lg border border-primary-700/30">
-                                    <h3 className="text-lg font-medium text-primary-400 mb-2">Steampunk
-                                        Inspirations</h3>
-                                    <p className="text-gray-400 text-sm">Victorian-era industrial design elements merged
-                                        with modern technology</p>
+                                    <h3 className="text-lg font-medium text-primary-400 mb-2">Digital Foundation</h3>
+                                    <p className="text-gray-400 text-sm">A central hub connecting various projects and
+                                        technologies under one domain</p>
                                 </div>
                                 <div className="p-4 bg-secondary-900/50 rounded-lg border border-secondary-700/30">
-                                    <h3 className="text-lg font-medium text-secondary-400 mb-2">Cyberpunk
-                                        Aesthetics</h3>
-                                    <p className="text-gray-400 text-sm">Neon-lit digital landscapes with high-tech,
-                                        low-life undertones</p>
+                                    <h3 className="text-lg font-medium text-secondary-400 mb-2">Future Expansion</h3>
+                                    <p className="text-gray-400 text-sm">Scalable infrastructure for AI tools and other
+                                        specialized applications</p>
                                 </div>
                             </div>
                         </motion.div>
@@ -127,7 +132,7 @@ export default function About() {
             </section>
 
             {/* Add GitHub Stats component right after Core Technologies */}
-            <GitHubStats />
+            <GitHubStats/>
         </div>
     )
 }

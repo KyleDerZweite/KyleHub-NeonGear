@@ -56,7 +56,7 @@ const HeroSection = () => {
                     </h1>
                     <div className="h-1 w-32 bg-gradient-to-r from-primary-500 to-secondary-500 my-8 rounded-full" />
                     <h2 className="text-xl md:text-2xl text-gray-300 mb-8">
-                        Where steampunk meets cyberpunk in a digital wonderland of code and creativity.
+                        ERROR: 404 - Further description not found
                     </h2>
 
                     <div className="flex flex-wrap gap-4">

@@ -19,7 +19,7 @@ const DiscordWidget = () => {
             </span>
                     </h2>
                     <p className="text-gray-400 max-w-2xl mx-auto">
-                        Connect with like-minded developers and enthusiasts in my Discord server.
+                        ERROR: 404 - Further description not found
                     </p>
                 </motion.div>
 
@@ -35,7 +35,6 @@ const DiscordWidget = () => {
                             src="https://discord.com/widget?id=1354840927218434078&theme=dark"
                             width="350"
                             height="500"
-                            allowTransparency={true}
                             frameBorder="0"
                             sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
                             className="rounded-lg"

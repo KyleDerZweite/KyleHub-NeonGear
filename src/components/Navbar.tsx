@@ -5,18 +5,13 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { FiMenu, FiX } from 'react-icons/fi'
-import { useTheme } from 'next-themes'
-import { FiMoon, FiSun } from 'react-icons/fi'
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
     const pathname = usePathname()
-    const { theme, setTheme } = useTheme()
-    const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
-        setMounted(true)
         const handleScroll = () => {
             const isScrolled = window.scrollY > 10
             if (isScrolled !== scrolled) {
@@ -68,7 +63,7 @@ const Navbar = () => {
 
                     {/* Desktop Navigation */}
                     <motion.nav
-                        className="hidden md:flex space-x-8"
+                        className="hidden md:flex space-x-8 mx-auto"
                         initial="hidden"
                         animate="visible"
                         variants={navVariants}
@@ -84,21 +79,6 @@ const Navbar = () => {
                             </motion.div>
                         ))}
                     </motion.nav>
-
-                    {/* Theme Toggle */}
-                    {mounted && (
-                        <button
-                            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                            className="p-2 rounded-full bg-gray-800/50 hover:bg-gray-700/50 transition-colors"
-                            aria-label="Toggle theme"
-                        >
-                            {theme === 'dark' ? (
-                                <FiSun className="w-5 h-5 text-yellow-400" />
-                            ) : (
-                                <FiMoon className="w-5 h-5 text-blue-400" />
-                            )}
-                        </button>
-                    )}
 
                     {/* Mobile menu button */}
                     <div className="md:hidden flex items-center">

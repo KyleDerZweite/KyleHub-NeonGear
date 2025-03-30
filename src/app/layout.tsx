@@ -1,9 +1,9 @@
-import type { Metadata } from 'next'
-import { Inter, Space_Mono } from 'next/font/google'
+import type {Metadata} from 'next'
+import {Inter, Space_Mono} from 'next/font/google'
 import '@/styles/tailwind.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { ThemeProvider } from '@/components/ThemeProvider'
+import React from "react";
 
 const inter = Inter({
     subsets: ['latin'],
@@ -29,14 +29,12 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="en" suppressHydrationWarning className={`${inter.variable} ${spaceMono.variable}`}>
-        <body className="min-h-screen flex flex-col">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <html lang="en" className={`${inter.variable} ${spaceMono.variable}`}>
+        <body className="min-h-screen flex flex-col bg-cyberpunk-dark text-gray-300">
             <div className="fixed inset-0 bg-cyber-grid z-[-1] opacity-20"></div>
-            <Navbar />
+            <Navbar/>
             <main className="flex-grow">{children}</main>
-            <Footer />
-        </ThemeProvider>
+            <Footer/>
         </body>
         </html>
     )
