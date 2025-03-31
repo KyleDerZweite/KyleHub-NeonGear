@@ -32,7 +32,7 @@ For any questions or data removal requests, please contact:
 `;
 
     return (
-        <div className="container mx-auto px-4 py-12">
+        <div className="container mx-auto pt-24 px-4 py-12">
             <MarkdownEditor
                 title="NeonGear Privacy Policy"
                 filename="privacy-policy.md"

@@ -32,7 +32,7 @@ export default function NeonGearHome() {
                 transition={{ delay: 0.4, duration: 0.8 }}
                 className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl w-full"
             >
-                <Link href="/neongear/privacy-policy">
+                <Link href="/privacy-policy">
                     <div className="editor-card p-6 rounded-lg border border-purple-500/30 bg-[#1e1e2e] backdrop-blur-sm hover:border-purple-400/50 transition-all hover:transform hover:scale-[1.02]">
                         <div className="editor-header flex items-center mb-4">
                             <div className="window-controls flex space-x-2 mr-4">
@@ -61,7 +61,7 @@ export default function NeonGearHome() {
                     </div>
                 </Link>
 
-                <Link href="/neongear/terms-of-service">
+                <Link href="/terms-of-service">
                     <div className="editor-card p-6 rounded-lg border border-purple-500/30 bg-[#1e1e2e] backdrop-blur-sm hover:border-purple-400/50 transition-all hover:transform hover:scale-[1.02]">
                         <div className="editor-header flex items-center mb-4">
                             <div className="window-controls flex space-x-2 mr-4">

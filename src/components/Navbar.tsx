@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { FiMenu, FiX } from 'react-icons/fi'
+import {FiMenu, FiX} from 'react-icons/fi'
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -24,8 +24,9 @@ const Navbar = () => {
     }, [scrolled])
 
     const navLinks = [
-        { name: 'Home', href: '/' },
-        { name: 'About', href: '/about' }
+        { name: 'Privacy Policy', href: '/privacy-policy' },
+        { name: 'Terms of Service', href: '/terms-of-service' },
+        { name: '<FiHome /> KyleHub', href: 'https://www.kylehub.dev' }
     ]
 
     const navVariants = {
@@ -54,11 +55,11 @@ const Navbar = () => {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
-                    <Link href="/public" className="flex items-center">
-            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-500">
-              <span className="text-white">Kyle</span>Hub
-              <span className="text-cyberpunk-accent">.</span>
-            </span>
+                    <Link href="/" className="flex items-center">
+                        <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-500">
+                          <span className="text-white">Neon</span>Gear
+                          <span className="text-cyberpunk-accent">.</span>
+                        </span>
                     </Link>
 
                     {/* Desktop Navigation */}
