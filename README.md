@@ -1,4 +1,4 @@
-# KyleHub 🚀
+# KyleHub - NeonGear 🚀
 
 A modern web application built with Next.js 15 and React 19, featuring smooth animations and a TypeScript-first approach.
 
@@ -9,6 +9,8 @@ A modern web application built with Next.js 15 and React 19, featuring smooth an
 
 ## 🌟 Features
 
+- 🔗 Integrated with KyleHub ecosystem
+- 🛠️ Manage NeonGear products and services
 - ⚡ Built with Next.js 15 for optimal performance and SEO
 - 🎨 Styled with TailwindCSS for responsive design
 - 🔄 Smooth animations powered by Framer Motion
@@ -28,8 +30,8 @@ A modern web application built with Next.js 15 and React 19, featuring smooth an
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/KyleDerZweite/KyleHub.git
-cd KyleHub
+git clone https://github.com/KyleDerZweite/KyleHub-NeonGear.git
+cd KyleHub-NeonGear
 ```
 
 2. Install dependencies:
@@ -65,7 +67,7 @@ pnpm dev
 ## 📁 Project Structure
 
 ```
-KyleHub/
+KyleHub-NeonGear/
 ├── public/        # Static files
 ├── src/app/       # Next.js 15 app directory
 └── src/styles/    # Global styles and Tailwind configuration
