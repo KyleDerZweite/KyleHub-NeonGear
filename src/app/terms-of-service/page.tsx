@@ -1,6 +1,6 @@
 'use client'
 
-import MarkdownEditor from '@/components/neongear/MarkdownEditor'
+import MarkdownEditor from '@/components/MarkdownEditor'
 
 export default function TermsOfService() {
     const termsOfServiceMd = `# Terms of Service
